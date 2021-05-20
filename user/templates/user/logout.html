@@ -1,0 +1,20 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}LogOut{% endblock title %}
+{% block body %}
+		<style>
+			body {
+				background-image: url('/static/aven.jpg');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+			}
+		</style>
+		<h2 style="color: white;" >Successfully Logged Out</h2>
+		<div class="border-top pt-3">
+			<small class="text-muted pt-3">
+				<a  href="{% url 'login' %}">Sign In</a>
+			</small>
+		</div>	
+{% endblock body %}
+

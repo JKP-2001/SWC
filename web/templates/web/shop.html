@@ -1,0 +1,45 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Shop{% endblock title %}
+{% block body %}
+<head>
+  
+  <link rel="stylesheet" type="text/css" href="/static/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="/static/responsive.css">
+</head>
+<style>
+	body {
+		background-image: url('/static/aven.jpg');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+</style>
+<div class="container my-3">
+  <h1 class="my-4 text-center" style="color: white;">Avengers Assemble!</h1>  
+  <div class="row">    
+    {% for shop in shops %}
+    <div class="col-md-4">      
+      <div class="card mb-4 shadow-sm">
+        <img src="{{shop.img.url}}" class="d-block w-100" alt="...">
+        {% if shop.offer %}
+          <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title" style="color: black;">{{shop.name}}</h4>
+          <p class="card-text" >{{shop.desc}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a href="{% url 'buy' %}" class="btn btn-primary">Buy This</a>
+              
+            </div>
+            <h4 style="color:green;">₹{{shop.price}}</h4>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    {% endfor %}
+  </div>
+{% endblock body %}
+

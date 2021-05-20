@@ -1,0 +1,30 @@
+{% extends "web/base.html" %}
+{% block title %}Register{% endblock title %}
+{% load crispy_forms_tags %}
+{% block body %}
+	<style>
+		  body {
+		    background-image: url('/static/black.jpg');
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-size: cover;
+	
+	</style>
+	<div class="content_section" style="color: white;">
+		<form method="POST" style="color: white;">
+			{% csrf_token %}
+			<fieldset class="form-group" style="color: white;"> 
+				<legend class="border-bottom mb-4" style="color: white;">Join Today</legend>				
+				{{form|crispy}}
+			</fieldset>
+			<div class='form-group' style="color: white;">
+				<button class="btn btn-outline-info" type='submit' style="color: white;">Sign Up</button>
+			</div>
+		</form>
+		<div class="border-top pt-3">
+			<small class="text-muted">
+				Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+			</small>
+		</div>
+	</div>
+{% endblock body %}

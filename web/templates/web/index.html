@@ -1,0 +1,122 @@
+{% extends 'web/base.html' %}
+{% block title%}Home{% endblock title %}
+{% block body %}
+<!--Section: Block Content-->
+<head>
+  
+  <link rel="stylesheet" type="text/css" href="/static/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="/static/responsive.css">
+</head>
+<section>
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-2" data-slide-to="1"></li>
+      <li data-target="#carousel-example-2" data-slide-to="2"></li>
+    </ol>
+    <!--/Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view">
+          <img class="d-block w-100" src="/static/aven6.jpg" width="1620" height="700" 
+            alt="First slide">
+          <a href="#!">
+            <div class="mask rgba-black-light"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive" style="color: white;">Avnengers United!!!</h3>
+          <p>Mechandise</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="/static/civil.jpg" width="=1620" height="700" 
+            alt="Second slide">
+          <a href="#!">
+            <div class="mask rgba-black-light"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive" style="color: white;">The Best Ones Are Here</h3>
+          <p>Exclusive Offers</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <!--Mask color-->
+        <div class="view">
+          <img class="d-block w-100" src="/static/avne3.jpg" width="=2000" height="700" 
+            alt="Third slide">
+          <a href="#!">
+            <div class="mask rgba-black-light"></div>
+          </a>
+        </div>
+        <div class="carousel-caption">
+          <h3 class="h3-responsive" style="color: white;">Great Variety</h3>
+          <p>Super Exclusive</p>
+        </div>
+      </div>
+    </div>
+    <!--/Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/Controls-->
+  </div>
+  <!--/Carousel Wrapper-->
+
+</section>
+<style>
+  body {
+    background-image: url('/static/aven.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>
+<div class="container my-3">
+  <h1 class="my-4 text-center" style="color: white;">Popular Merchandise!</h1>  
+  <div class="row">    
+    {% for product in products %}
+    <div class="col-md-4">      
+      <div class="card mb-4 shadow-sm">
+        <img src="{{product.img.url}}" class="d-block w-100" alt="...">
+        {% if product.offer %}
+          <div class="spec_offer text-center" style="color: black;"><a href="#">Special Offer</a></div>
+        {% endif %}
+        <!-- <div id="content">
+        <div class="discount-label red"> <span>-10%</span> </div>
+        </div> -->
+        <div class="card-body">
+          <h5 class="card-title" style="color: black;">{{product.name}}</h5>
+          <p class="card-text">{{product.desc}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a href="{% url 'buy' %}" class="btn btn-primary">Buy This</a>
+              <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+            </div>
+            <h4 style="color: green;">₹{{product.price}}</h4>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    {% endfor %}
+  </div>
+  
+</div>
+
+
+
+
+{% endblock body %}
